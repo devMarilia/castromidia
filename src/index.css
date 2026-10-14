@@ -105,6 +105,28 @@ body {
   box-shadow: 0 16px 48px rgba(201, 168, 76, 0.08);
 }
 
+/* ── Spotlight interativo (segue o cursor) ──────────────────── */
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    280px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(var(--spot-color, 201, 168, 76), 0.16),
+    transparent 72%
+  );
+  pointer-events: none;
+}
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
 /* ── Botões ────────────────────────────────────────────────── */
 .btn-gold {
   background: linear-gradient(
@@ -136,24 +158,25 @@ body {
 /* ── Nav link com underline animado ───────────────────────── */
 .nav-link {
   position: relative;
-  color: #999;
-  font-size: 0.75rem; /* texto menor */
-  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   transition: color 0.2s;
 }
 .nav-link::after {
   content: "";
   position: absolute;
-  bottom: -3px;
+  bottom: -6px;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 2px;
   background: var(--gold);
   transition: width 0.3s;
 }
 .nav-link:hover {
-  color: var(--gold-light);
+  color: #fff;
 }
 .nav-link:hover::after {
   width: 100%;
@@ -184,6 +207,15 @@ body {
 }
 .delay-4 {
   animation-delay: 0.52s;
+}
+
+/* ── Esconde a scrollbar em faixas de rolagem horizontal ───── */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* ── Stat display number ───────────────────────────────────── */

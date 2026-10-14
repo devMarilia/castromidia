@@ -1,104 +1,74 @@
-// components/Sobre.jsx
-// Sem background — continua o canvas do body.
+import WhatsAppButton from "./WhatsAppButton";
 
-import CTAWhatsapp from "./CTAWhatsapp";
-
-const DIFERENCIAIS = [
-  {
-    cor: "text-gold",
-    texto: "Relatórios claros com foco em custo por lead e ROAS",
-  },
-  {
-    cor: "text-rose",
-    texto: "Estratégias personalizadas para cada nicho e objetivo",
-  },
-  {
-    cor: "text-gold",
-    texto: "Acompanhamento contínuo e otimização semanal das campanhas",
-  },
+const PROFILE_DATA = [
+  { label: "Especialidade", value: "Google Ads e Meta Ads" },
+  { label: "Atendimento", value: "Empresas que querem escalar com clareza" },
+  { label: "Experiência", value: "14 anos em marketing, vendas e estratégia" },
+  { label: "Modelo", value: "Gestão próxima, análise contínua e otimização" },
+  { label: "Foco", value: "Lead qualificado, ROAS e crescimento sustentável" },
+  { label: "Disponibilidade", value: "Atendimento consultivo e acompanhamento real" },
 ];
 
 export default function Sobre() {
   return (
-    <section id="sobre" className="h-full py-20 px-6 bg-black">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        {/* ── Texto ── */}
-        <div>
-          <p className="font-body text-xs tracking-widest uppercase text-gold mb-2">
-            Sobre nós
-          </p>
-          <div className="divider !mx-0 mb-6" />
-
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-snug">
-            Estratégia que move <span className="text-gradient">negócios</span>,
-            <br />
-            não só anúncios.
-          </h2>
-
-          <p className="font-body text-sm text-gray-400 leading-relaxed mb-4">
-            Somos especialistas em{" "}
-            <strong className="text-gold-light font-medium">
-              gestão de tráfego pago
-            </strong>{" "}
-            com foco total em resultados mensuráveis. Cada campanha é construída
-            sobre dados reais, não achismos.
-          </p>
-          <p className="font-body text-sm text-gray-400 leading-relaxed mb-8">
-            Nossa filosofia é simples: transparência e resultado andam juntos.
-            Um gestor que não explica suas métricas de conversão provavelmente
-            não está entregando o que você pagou.
-          </p>
-
-          <ul className="space-y-3">
-            {DIFERENCIAIS.map(({ cor, texto }, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 font-body text-sm text-gray-300"
-              >
-                <span className={`mt-0.5 ${cor}`}>✦</span>
-                {texto}
-              </li>
-            ))}
-          </ul>
+    <section id="sobre" className="px-6 py-24 lg:px-8">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 md:gap-10 lg:gap-14 xl:gap-16 md:grid-cols-[minmax(280px,430px)_minmax(0,1fr)]">
+        <div className="mx-auto w-full max-w-[430px] md:mx-0">
+          <div className="overflow-hidden border border-white/5 bg-[#0f1118] shadow-[0_24px_70px_rgba(0,0,0,0.34)]">
+            <img
+              src="/fundadorgustavo.png"
+              alt="Especialista da Castro Mídia"
+              className="h-[520px] w-full object-cover object-top md:h-[620px]"
+            />
+          </div>
         </div>
 
-        {/* ── Card citação ── */}
-        <div className="relative">
-          <div
-            className="absolute inset-0 bg-center bg-contain bg-no-repeat"
-            style={{
-              backgroundImage: "url('/imagemSobre.jpg')",
-              opacity: 0.7,
-            }}
-          />
-          <div className="rounded-2xl p-8 relative z-10">
-            <div className="text-4xl text-center mb-10 opacity-30 font-display">
-              
+        <div className="space-y-8">
+          <div className="space-y-5">
+            <p className="text-sm font-bold uppercase tracking-[0.12em] text-gold">
+              Discover
+            </p>
+
+            <div>
+              <h2 className="text-4xl font-black text-white md:text-5xl xl:text-[3.6rem]">
+                About Me
+              </h2>
+              <div className="mt-4 h-[3px] w-16 bg-gold" />
             </div>
-            <blockquote className="font-display text-2xl text-center text-gray-200 italic leading-relaxed mb-6 mt-6">
-              "Não é só Marketing,
-              <br /> É estratégia aplicada à <br />
-              <span className="text-gradient"> decisão de compra.</span>"
-            </blockquote>
-            <div className="flex items-center justify-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gold to-rose flex items-center justify-center text-black text-xs font-bold">
-                CM
-              </div>
-              <div>
-                <p className="font-body text-sm font-medium text-gray-200">
-                  Castro Mídia
-                </p>
-                <p className="font-body text-xs text-gray-500">@castro_midia</p>
-              </div>
-            </div>
+
+            <p className="max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
+              Meu nome é Castro Mídia e eu trabalho com estratégias de tráfego
+              pago para empresas que desejam crescer com previsibilidade. Unimos
+              posicionamento, mídia e inteligência de dados para construir
+              campanhas mais fortes e operações mais lucrativas.
+            </p>
+
+            <p className="max-w-3xl text-base leading-8 text-slate-400 md:text-lg">
+              Nada aqui é genérico. Cada projeto nasce com objetivo claro,
+              acompanhamento próximo e otimização contínua para transformar
+              investimento em clientes qualificados, escala e resultado real.
+            </p>
           </div>
 
-          {/* Bordas decorativas */}
-          <div className="absolute -top-3 -right-3 w-20 h-20 border border-rose/15 rounded-2xl pointer-events-none" />
-          <div className="absolute -bottom-3 -left-3 w-14 h-14 border border-gold/15 rounded-xl  pointer-events-none" />
+          <div className="grid gap-x-10 gap-y-5 border border-gold/25 bg-transparent p-6 md:grid-cols-2 md:p-8">
+            {PROFILE_DATA.map(({ label, value }) => (
+              <div key={label} className="space-y-1">
+                <p className="text-sm font-bold text-white">{label}:</p>
+                <p className="text-sm leading-7 text-slate-300 md:text-base">
+                  {value}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <WhatsAppButton
+            text="Falar com um especialista"
+            message="Olá! Quero saber mais sobre os serviços."
+            arrow
+            className="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-sm font-extrabold shadow-[0_18px_40px_rgba(201,168,76,0.26)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_44px_rgba(201,168,76,0.34)] md:text-base"
+          />
         </div>
       </div>
-      <CTAWhatsapp />
     </section>
   );
 }

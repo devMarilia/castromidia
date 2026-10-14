@@ -1,146 +1,101 @@
 // components/Cases.jsx
 // Sem background próprio.
 
-import CTAWhatsapp from "./CTAWhatsapp";
+import { motion as Motion } from "framer-motion";
+import CountUp from "./CountUp";
 
-const CASES = [
+const RESULTADOS = [
   {
-    tag: "Clínica de Fisioterapia",
-    tagCor: "text-gold bg-gold/10",
-    titulo: "Clínica de Fisioterapia",
-    sub: "Meta Ads · 3 meses",
-    metricas: [
-      { valor: "+180%", label: "Leads gerados", cor: "text-gradient" },
-      { valor: "R$9,38", label: "Custo por lead", cor: "text-rose" },
-    ],
+    desc: "Campanhas otimizadas para gerar leads qualificados com rapidez.",
+    valorNum: 210,
+    prefix: "+",
+    suffix: "%",
+    legenda: "aumento em leads gerados",
   },
   {
-    tag: "Clínica de estética",
-    tagCor: "text-rose bg-rose/10",
-    titulo: "Clínica de Estética",
-    sub: "Google + Meta Ads · 2 meses",
-    metricas: [
-      { valor: "+210%", label: "Leads gerados", cor: "text-gradient" },
-      { valor: "R$6,20", label: "Custo por lead", cor: "text-rose" },
-    ],
+    desc: "Testes e otimização contínua reduzem o custo de cada lead.",
+    valorNum: 6.2,
+    prefix: "R$ ",
+    decimals: 2,
+    legenda: "menor custo por lead",
   },
   {
-    tag: "Clínica Odontológica",
-    tagCor: "text-gold bg-gold/10",
-    titulo: "Gráfica",
-    sub: "Meta Ads · Lançamento",
-    metricas: [
-      { valor: "+150%", label: "Leads gerados", cor: "text-gradient" },
-      { valor: "R$7,45", label: "Custo por lead", cor: "text-rose" },
-    ],
+    desc: "Experiência consolidada em tráfego pago, vendas e estratégia.",
+    valorNum: 14,
+    prefix: "+",
+    legenda: "anos de experiência",
+  },
+  {
+    desc: "Atuação em diferentes nichos com acompanhamento próximo.",
+    valorNum: 3,
+    prefix: "+",
+    legenda: "segmentos atendidos",
   },
 ];
 
-const DEPOIMENTOS = [
-  {
-    texto:
-      "Em 60 dias a Castro Mídia reduziu nosso custo por lead pela metade e triplicou o volume. Resultado que nunca tínhamos visto com outras agências.",
-    nome: "Cinthia Capito",
-    cargo: "CEO Escola Vagalume",
-    initials: "CC",
-    gradiente: "from-gold to-gold-dark",
-  },
-  {
-    texto:
-      "A transparência nos relatórios faz toda a diferença. Sei exatamente onde cada centavo está sendo investido e qual retorno está gerando.",
-    nome: "Laryssa Neco",
-    cargo: "CEO Neolive Odontologia",
-    initials: "LN",
-    gradiente: "from-rose to-rose-light",
-  },
-  {
-    texto:
-      "A transparência nos relatórios faz toda a diferença. Sei exatamente onde cada centavo está sendo investido e qual retorno está gerando.",
-    nome: "Marcelo Gomes",
-    cargo: "CEO Vital Visio",
-    initials: "MG",
-    gradiente: "from-rose to-rose-light",
-  },
-];
+const itemVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
 
 export default function Cases() {
   return (
-    <section id="cases" className="px-6 py-28 bg-stone-950">
+    <section id="cases" className="px-6 py-36 md:py-44 bg-stone-950">
       <div className="max-w-7xl mx-auto">
-        {/* Header da seção */}
-        <div className="text-center mb-14">
-          <p className="font-body text-xs tracking-widest uppercase text-gold mb-2">
+        <Motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-24"
+        >
+          <p className="font-body text-sm tracking-widest uppercase text-gold mb-3">
             Resultados reais
           </p>
           <div className="divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold">
-            Resultados{" "}
-            <span className="text-gradient">que impactam</span>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold">
+            Resultados <span className="text-gradient">que impactam</span>
           </h2>
-        </div>
+          <p className="font-body text-base md:text-lg text-gray-400 max-w-2xl mx-auto mt-6">
+            Acompanhamento próximo e otimização contínua que transformam
+            investimento em números concretos.
+          </p>
+        </Motion.div>
 
-        {/* Cards de cases */}
-        <div className="grid md:grid-cols-3 gap-5 mb-5">
-          {CASES.map(({ tag, tagCor, titulo, sub, metricas }, i) => (
-            <div key={i} className="card rounded-2xl p-6">
-              <div className="flex items-center justify-between mb-5">
-                <span
-                  className={`font-body text-xs tracking-wide uppercase ${tagCor} px-3 py-1 rounded-full`}
-                >
-                  {tag}
-                </span>
-                <span className="font-display text-xl text-gold/20">
-                  0{i + 1}
-                </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-10">
+          {RESULTADOS.map(({ desc, valorNum, prefix, suffix, decimals, legenda }, i) => (
+            <Motion.div
+              key={legenda}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              variants={itemVariants}
+              className="flex flex-col items-start text-left gap-10 px-6 lg:px-8 first:pl-0 border-b border-gold/10 pb-10 last:border-b-0 lg:border-b-0 lg:pb-0 lg:border-r lg:last:border-r-0"
+            >
+              <p className="font-body text-base text-gray-400 leading-relaxed max-w-[260px]">
+                {desc}
+              </p>
+              <div>
+                <CountUp
+                  value={valorNum}
+                  prefix={prefix}
+                  suffix={suffix}
+                  decimals={decimals}
+                  className="font-display text-5xl md:text-6xl font-bold text-gradient whitespace-nowrap"
+                />
+                <p className="font-body text-sm text-gray-500 mt-3">
+                  {legenda}
+                </p>
               </div>
-              <h3 className="font-display text-lg font-semibold text-gray-100 mb-1">
-                {titulo}
-              </h3>
-              <p className="font-body text-xs text-gray-500 mb-5">{sub}</p>
-              <div className="grid grid-cols-2 gap-4 border-t border-gold/10 pt-5">
-                {metricas.map(({ valor, label, cor }) => (
-                  <div key={label}>
-                    <p className={`font-display text-2xl font-bold ${cor}`}>
-                      {valor}
-                    </p>
-                    <p className="font-body text-xs text-gray-500 mt-0.5">
-                      {label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </Motion.div>
           ))}
         </div>
-
-        {/* Depoimentos */}
-        <div className="grid md:grid-cols-2 gap-5">
-          {DEPOIMENTOS.map(({ texto, nome, cargo, initials, gradiente }) => (
-            <div key={nome} className="card rounded-2xl p-6">
-              <p className="text-gold text-xs mb-3 tracking-wider">★★★★★</p>
-              <p className="font-body text-sm text-gray-300 italic leading-relaxed mb-5">
-                "{texto}"
-              </p>
-              <div className="flex items-center gap-3">
-                <div
-                  className={`w-9 h-9 rounded-full bg-gradient-to-br ${gradiente} flex items-center justify-center text-black text-xs font-bold`}
-                >
-                  {initials}
-                </div>
-                <div>
-                  <p className="font-body text-sm font-medium text-gray-200">
-                    {nome}
-                  </p>
-                  <p className="font-body text-xs text-gray-500">{cargo}</p>
-                </div>
-              </div>
-            </div>
-          ))}   
-          <CTAWhatsapp />
-        </div>
-     
       </div>
-     
     </section>
   );
 }

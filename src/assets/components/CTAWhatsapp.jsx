@@ -1,19 +1,14 @@
-import React from "react";
-import { WhatsAppIcon } from "./icons";
+import WhatsAppButton from "./WhatsAppButton";
 
 const CTAWhatsapp = () => {
   return (
-    <div className="h-[20vh] w-[100%] flex justify-center items-center">
+    <div className="w-full flex justify-center items-center py-10">
       {/* CTA principal */}
-      <a
-        href="https://wa.me/5511952992652"
-        target="_blank"
-        rel="noreferrer"
-        className="btn-gold inline-flex items-center gap-2.5 px-10 py-4 rounded-full font-body text-sm tracking-wide mx-auto"
-      >
-       <WhatsAppIcon className="w-4 h-4" />
-        Entre em contato
-      </a>
+      <WhatsAppButton
+        text="Entre em contato"
+        arrow
+        className="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-sm font-extrabold shadow-[0_18px_40px_rgba(201,168,76,0.26)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_44px_rgba(201,168,76,0.34)] md:text-base"
+      />
     </div>
   );
 };
